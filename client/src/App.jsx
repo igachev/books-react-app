@@ -7,6 +7,7 @@ import Navbar from './components/NavBar'
 import List from './components/List'
 import Main from './components/Main'
 import * as bookService from './services/bookService.js'
+import BookList from './components/BookList'
 
 function App() {
   
@@ -39,7 +40,7 @@ function App() {
       <Main>
 
     <List>
-
+    <BookList books={books} />
     </List>
 
       </Main>

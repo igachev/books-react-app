@@ -6,9 +6,9 @@ export default function BookList({
 
     return (
         <div className="book-list-container">
-            {books.map((book) => {(
+            {books.map((book) => (
                 <Book key={book._id} book={book} />
-            )})}
+            ))}
         </div>
     )
 }
