@@ -1,9 +1,10 @@
+import Search from "./Search";
 
 export default function Navbar() {
 
     return (
-        <div>
-           NavBar
+        <div className="navbar-container">
+           <Search />
         </div>
     )
 }
