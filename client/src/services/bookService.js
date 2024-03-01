@@ -12,3 +12,9 @@ export async function getBook(bookId) {
     const result = await request.get(`${baseUrl}/${bookId}`)
     return result
 }
+
+export async function searchBooks(title) {
+    
+    const result = await request.get(`${baseUrl}?where=title LIKE "${title}"`)
+    return result
+}
