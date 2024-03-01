@@ -40,6 +40,14 @@ img {
   justify-content: center;
 }
 
+.list-container {
+  width: 40%;
+ margin: 10px;
+  background-color: blanchedalmond;
+  padding: 5px;
+
+}
+
 .book-list-container {
   width: 40%;
   background-color: rgb(95, 68, 68);
@@ -49,6 +57,7 @@ img {
   align-items: center;
   padding: 10px 0;
   border-radius: 10px;
+  
 }
 
 .book-list-container .book {
@@ -60,5 +69,20 @@ img {
 }
 
 .book-list-container .book img {
+  
   width: 30%;
+  min-width: 100px;
+}
+
+.book-details-container {
+ min-height: 100%;
+  background-color: rgb(65, 57, 46);
+  padding: 10px;
+  color: #fff;
+}
+
+.book-details-container img {
+ width: 40%;
+ 
+ 
 }

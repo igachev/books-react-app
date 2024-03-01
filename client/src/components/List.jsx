@@ -2,7 +2,7 @@
 export default function List({children}) {
 
     return (
-        <div>
+        <div className="list-container">
             {children}
         </div>
     )

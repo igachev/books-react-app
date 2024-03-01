@@ -8,6 +8,7 @@ import List from './components/List'
 import Main from './components/Main'
 import * as bookService from './services/bookService.js'
 import BookList from './components/BookList'
+import BookDetails from './components/BookDetails.jsx'
 
 function App() {
   
@@ -46,6 +47,12 @@ function App() {
 
     <List>
     <BookList books={books} updateSelectedBookId={updateSelectedBookId}  />
+    </List>
+
+    <List>
+      {selectedBookId 
+       ? <BookDetails selectedBookId={selectedBookId} />
+       : null}
     </List>
 
       </Main>
