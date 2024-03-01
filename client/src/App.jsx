@@ -46,7 +46,7 @@ function App() {
 
       <Header>
         <Logo />
-        <Navbar />
+        <Navbar setBooks={setBooks} setError={setError} setIsLoading={setIsLoading} />
       </Header>
 
       <Main>
