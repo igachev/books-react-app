@@ -1,13 +1,18 @@
 import Book from "./Book"
 
 export default function BookList({
-    books
+    books,
+    updateSelectedBookId
 }) {
 
     return (
         <div className="book-list-container">
             {books.map((book) => (
-                <Book key={book._id} book={book} />
+                <Book 
+                key={book._id} 
+                book={book}  
+                updateSelectedBookId={updateSelectedBookId} 
+                />
             ))}
         </div>
     )

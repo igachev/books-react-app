@@ -13,6 +13,7 @@ function App() {
   
   const [books,setBooks] = useState([])
   const [error,setError] = useState("")
+  const [selectedBookId,setSelectedBookId] = useState('')
 
   async function getBooks() {
     try {
@@ -23,6 +24,10 @@ function App() {
      // console.log(err)
       setError(err.message)
     }
+  }
+
+ function updateSelectedBookId(id) {
+  setSelectedBookId((oldId) => oldId !== id ? id : '')
   }
 
   useEffect(() => {
@@ -40,7 +45,7 @@ function App() {
       <Main>
 
     <List>
-    <BookList books={books} />
+    <BookList books={books} updateSelectedBookId={updateSelectedBookId}  />
     </List>
 
       </Main>

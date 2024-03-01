@@ -1,10 +1,12 @@
 
 export default function Book({
-    book
+    book,
+    updateSelectedBookId
 }) {
 
+
     return (
-        <div className="book">
+        <div className="book" onClick={() => updateSelectedBookId(book._id)}>
             <img src={book.imageUrl} alt={book.title} />
             <h3>title: {book.title}</h3>
             <p>author: {book.author}</p>
