@@ -7,3 +7,8 @@ export async function getBooks() {
     const result = await request.get(baseUrl)
     return result
 }
+
+export async function getBook(bookId) {
+    const result = await request.get(`${baseUrl}/${bookId}`)
+    return result
+}
