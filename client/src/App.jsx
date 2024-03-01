@@ -9,21 +9,27 @@ import Main from './components/Main'
 import * as bookService from './services/bookService.js'
 import BookList from './components/BookList'
 import BookDetails from './components/BookDetails.jsx'
+import Loader from './components/Loader.jsx'
 
 function App() {
   
   const [books,setBooks] = useState([])
   const [error,setError] = useState("")
   const [selectedBookId,setSelectedBookId] = useState('')
+  const [isLoading,setIsLoading] = useState(false)
 
   async function getBooks() {
     try {
+      setIsLoading(true)
       const result = await bookService.getBooks()
      // console.log(result)
       setBooks(result)
     } catch (err) {
      // console.log(err)
       setError(err.message)
+    }
+    finally {
+      setIsLoading(false)
     }
   }
 
@@ -46,13 +52,13 @@ function App() {
       <Main>
 
     <List>
-    <BookList books={books} updateSelectedBookId={updateSelectedBookId}  />
+   {!error && !isLoading && <BookList books={books} updateSelectedBookId={updateSelectedBookId} /> }
+   {!error && isLoading && <Loader />}
     </List>
 
     <List>
-      {selectedBookId 
-       ? <BookDetails selectedBookId={selectedBookId} />
-       : null}
+      {selectedBookId && <BookDetails selectedBookId={selectedBookId} /> }
+      
     </List>
 
       </Main>
