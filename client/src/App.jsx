@@ -54,6 +54,7 @@ function App() {
     <List>
    {!error && !isLoading && <BookList books={books} updateSelectedBookId={updateSelectedBookId} /> }
    {!error && isLoading && <Loader />}
+   {error && !isLoading && <p>Error: {error}</p>}
     </List>
 
     <List>
