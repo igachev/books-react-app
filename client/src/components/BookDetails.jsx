@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react"
 import * as bookService from '../services/bookService'
 import Loader from '../components/Loader.jsx'
+import StarRating from "./StarRating.jsx"
+
 
 export default function BookDetails({
     selectedBookId,
@@ -41,6 +43,7 @@ export default function BookDetails({
             <h5>Author: {book.author}</h5>
             <h6>Year: {book.year}</h6>
             <p>{book.resume}</p>
+            <StarRating />
         </div>
         )}
     </>
