@@ -13,8 +13,8 @@ export async function getBook(bookId) {
     return result
 }
 
-export async function searchBooks(title) {
-    
-    const result = await request.get(`${baseUrl}?where=title LIKE "${title}"`)
-    return result
+export async function searchBooks(title,controller) {
+        const response = await fetch(`${baseUrl}?where=title LIKE "${title}"`,{signal: controller.signal})
+        const result = await response.json()
+        return result
 }
