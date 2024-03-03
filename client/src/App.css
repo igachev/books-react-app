@@ -86,3 +86,13 @@ img {
  
  
 }
+
+.star {
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.star-rating .rating-value {
+  font-size: 20px;
+  margin-left: 20px;
+}

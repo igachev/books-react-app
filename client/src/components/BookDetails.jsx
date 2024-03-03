@@ -43,7 +43,7 @@ export default function BookDetails({
             <h5>Author: {book.author}</h5>
             <h6>Year: {book.year}</h6>
             <p>{book.resume}</p>
-            <StarRating />
+            <StarRating maxRating={5} />
         </div>
         )}
     </>
