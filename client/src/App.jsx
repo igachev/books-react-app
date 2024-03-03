@@ -14,6 +14,15 @@ import Loader from './components/Loader.jsx'
 function App() {
   
   const [books,setBooks] = useState([])
+
+  const [readBooks,setReadBooks] = useState(() => {
+    const booksRead = localStorage.getItem("readBooks");
+    if(booksRead && booksRead !== 'undefined') {
+      return JSON.parse(booksRead)
+    }
+    return []
+  });
+
   const [error,setError] = useState("")
   const [selectedBookId,setSelectedBookId] = useState('')
   const [isLoading,setIsLoading] = useState(false)
@@ -37,9 +46,17 @@ function App() {
   setSelectedBookId((oldId) => oldId !== id ? id : '')
   }
 
+  function addReadBook(book,rating) {
+    setReadBooks((b) => [...b,{...book,rating}])
+  }
+
   useEffect(() => {
     getBooks()
   },[])
+
+  useEffect(() => {
+    localStorage.setItem("readBooks",JSON.stringify(readBooks))
+  },[readBooks])
 
   return (
     <div className='container'>
@@ -58,7 +75,7 @@ function App() {
     </List>
 
     <List>
-      {selectedBookId && <BookDetails selectedBookId={selectedBookId} /> }
+      {selectedBookId && <BookDetails selectedBookId={selectedBookId} addReadBook={addReadBook} /> }
       
     </List>
 

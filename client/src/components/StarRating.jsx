@@ -2,12 +2,13 @@ import { useState } from "react";
 import Star from "./Star";
 
 export default function StarRating({
-    maxRating
+    maxRating,
+    addReadBook,
+    book
 }) {
 
     const [rating,setRating] = useState(0)
     const [hoverRating,setHoverRating] = useState(0)
-
     return (
         <div className="star-rating">
            {Array.from( {length:maxRating}, (k,i) => (
@@ -20,6 +21,9 @@ export default function StarRating({
             />
            ))}
            <span className="rating-value">{rating || hoverRating}</span>
+           <div>
+                <button onClick={() => addReadBook(book,rating)}>Add as Read</button>
+            </div>
         </div>
     )
 }
