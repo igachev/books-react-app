@@ -48,6 +48,10 @@ img {
 
 }
 
+.list-container h2 {
+  text-align: center;
+}
+
 .book-list-container {
   width: 40%;
   background-color: rgb(95, 68, 68);
@@ -57,7 +61,7 @@ img {
   align-items: center;
   padding: 10px 0;
   border-radius: 10px;
-  
+  margin: auto;
 }
 
 .book-list-container .book {

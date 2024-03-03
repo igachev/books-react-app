@@ -69,13 +69,19 @@ function App() {
       <Main>
 
     <List>
+      <h2>Available Books</h2>
    {!error && !isLoading && <BookList books={books} updateSelectedBookId={updateSelectedBookId} /> }
    {!error && isLoading && <Loader />}
    {error && !isLoading && <p>Error: {error}</p>}
     </List>
 
     <List>
-      {selectedBookId && <BookDetails selectedBookId={selectedBookId} addReadBook={addReadBook} /> }
+      {selectedBookId ? <h2>Book Details</h2> : <h2>Read Books</h2>}
+      {
+      selectedBookId 
+      ? <BookDetails selectedBookId={selectedBookId} addReadBook={addReadBook} /> 
+      : <BookList books={readBooks} />
+      }
       
     </List>
 
