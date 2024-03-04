@@ -24,6 +24,7 @@ function App() {
   });
 
   const [error,setError] = useState("")
+  const [readBookError,setReadBookError] = useState("")
   const [selectedBookId,setSelectedBookId] = useState('')
   const [isLoading,setIsLoading] = useState(false)
 
@@ -44,10 +45,20 @@ function App() {
 
  function updateSelectedBookId(id) {
   setSelectedBookId((oldId) => oldId !== id ? id : '')
+  setReadBookError("")
   }
 
   function addReadBook(book,rating) {
-    setReadBooks((b) => [...b,{...book,rating}])
+    const isAlreadyAdded = readBooks.find((b) => b._id === book._id)
+    console.log(isAlreadyAdded)
+    if(!isAlreadyAdded) {
+      setReadBooks((b) => [...b,{...book,rating}])
+      setSelectedBookId("")
+      setReadBookError("")
+    }
+    else {
+      setReadBookError("You already read that book")
+    }
   }
 
   useEffect(() => {
@@ -79,7 +90,7 @@ function App() {
       {selectedBookId ? <h2>Book Details</h2> : <h2>Read Books</h2>}
       {
       selectedBookId 
-      ? <BookDetails selectedBookId={selectedBookId} addReadBook={addReadBook} /> 
+      ? <BookDetails selectedBookId={selectedBookId} addReadBook={addReadBook} readBookError={readBookError} /> 
       : <BookList books={readBooks} />
       }
       

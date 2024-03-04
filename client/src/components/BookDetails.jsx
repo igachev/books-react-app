@@ -6,7 +6,8 @@ import StarRating from "./StarRating.jsx"
 
 export default function BookDetails({
     selectedBookId,
-    addReadBook
+    addReadBook,
+    readBookError
 }) {
 
     const [book,setBook] = useState({})
@@ -45,10 +46,11 @@ export default function BookDetails({
             <h6>Year: {book.year}</h6>
             <p>{book.resume}</p>
             <StarRating maxRating={5} book={book} addReadBook={addReadBook} />
-
+            {readBookError ? <p>{readBookError}</p> : null}
             
         </div>
         )}
+        
     </>
 
     return (
