@@ -10,6 +10,7 @@ import * as bookService from './services/bookService.js'
 import BookList from './components/BookList'
 import BookDetails from './components/BookDetails.jsx'
 import Loader from './components/Loader.jsx'
+import { useKeyDownEvent } from './services/useKeyDownEvent.js'
 
 function App() {
   
@@ -61,13 +62,8 @@ function App() {
     }
   }
 
-  function back(e) {
-    if(e.code === 'Escape') {
+  function back() {
       setSelectedBookId("")
-    }
-    else {
-      setSelectedBookId("")
-    }
   }
 
   useEffect(() => {
@@ -78,12 +74,7 @@ function App() {
     localStorage.setItem("readBooks",JSON.stringify(readBooks))
   },[readBooks])
 
-  useEffect(() => {
-    document.addEventListener('keydown',back)
-    return (() => {
-      document.removeEventListener('keydown',back)
-    })
-  },[])
+ useKeyDownEvent('Escape',back)
 
   return (
     <div className='container'>

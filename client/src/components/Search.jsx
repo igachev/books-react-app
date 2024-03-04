@@ -1,6 +1,7 @@
 
 import { useEffect, useRef, useState } from 'react'
 import * as bookService from '../services/bookService.js'
+import { useKeyDownEvent } from '../services/useKeyDownEvent.js'
 
 export default function Search({
     setBooks,
@@ -49,26 +50,13 @@ export default function Search({
         }
     },[searchValue])
 
-    useEffect(() => {
-
-        function focusSearchInput(e) {
-            const activeElement = document.activeElement
-            if(e.code === 'Enter') {
-                inputSearchRef.current.focus()
-                if(activeElement !== inputSearchRef.current) {
-                    setSearchValue("")
-                }
-            }
-        }
-
-        inputSearchRef.current.focus()
-        document.addEventListener("keydown",focusSearchInput)
-
-        return (() => {
-            document.removeEventListener("keydown",focusSearchInput)
-        })
-
-    },[])
+   useKeyDownEvent("Enter",function() {
+    const activeElement = document.activeElement;
+    inputSearchRef.current.focus()
+    if(activeElement !== inputSearchRef.current) {
+        setSearchValue("")
+    }
+   })
 
     return (
         <div className="search-container">
