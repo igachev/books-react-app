@@ -53,11 +53,20 @@ function App() {
     console.log(isAlreadyAdded)
     if(!isAlreadyAdded) {
       setReadBooks((b) => [...b,{...book,rating}])
-      setSelectedBookId("")
+      back()
       setReadBookError("")
     }
     else {
       setReadBookError("You already read that book")
+    }
+  }
+
+  function back(e) {
+    if(e.code === 'Escape') {
+      setSelectedBookId("")
+    }
+    else {
+      setSelectedBookId("")
     }
   }
 
@@ -68,6 +77,13 @@ function App() {
   useEffect(() => {
     localStorage.setItem("readBooks",JSON.stringify(readBooks))
   },[readBooks])
+
+  useEffect(() => {
+    document.addEventListener('keydown',back)
+    return (() => {
+      document.removeEventListener('keydown',back)
+    })
+  },[])
 
   return (
     <div className='container'>
@@ -90,7 +106,7 @@ function App() {
       {selectedBookId ? <h2>Book Details</h2> : <h2>Read Books</h2>}
       {
       selectedBookId 
-      ? <BookDetails selectedBookId={selectedBookId} addReadBook={addReadBook} readBookError={readBookError} /> 
+      ? <BookDetails selectedBookId={selectedBookId} addReadBook={addReadBook} readBookError={readBookError} back={back} /> 
       : <BookList books={readBooks} />
       }
       
