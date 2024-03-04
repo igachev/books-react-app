@@ -46,7 +46,6 @@ function App() {
 
   function addReadBook(book,rating) {
     const isAlreadyAdded = readBooks.find((b) => b._id === book._id)
-    console.log(isAlreadyAdded)
     if(!isAlreadyAdded) {
       setReadBooks((b) => [...b,{...book,rating}])
       back()

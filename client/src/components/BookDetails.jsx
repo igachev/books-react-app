@@ -34,6 +34,13 @@ export default function BookDetails({
         getBook()
     },[selectedBookId])
 
+    useEffect(() => {
+        document.title = book.title;
+        return (() => {
+            document.title = "Vite + React"
+        })
+    },[book])
+
     let bookDetails = <>
     {isLoading && !error && <Loader />}
 
