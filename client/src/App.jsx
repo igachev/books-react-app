@@ -11,18 +11,13 @@ import BookList from './components/BookList'
 import BookDetails from './components/BookDetails.jsx'
 import Loader from './components/Loader.jsx'
 import { useKeyDownEvent } from './services/useKeyDownEvent.js'
+import { useLocalStorage } from './services/useLocalStorage.js'
 
 function App() {
   
   const [books,setBooks] = useState([])
-
-  const [readBooks,setReadBooks] = useState(() => {
-    const booksRead = localStorage.getItem("readBooks");
-    if(booksRead && booksRead !== 'undefined') {
-      return JSON.parse(booksRead)
-    }
-    return []
-  });
+  const [readBooks,setReadBooks] = useLocalStorage("readBooks")
+ 
 
   const [error,setError] = useState("")
   const [readBookError,setReadBookError] = useState("")
@@ -69,10 +64,6 @@ function App() {
   useEffect(() => {
     getBooks()
   },[])
-
-  useEffect(() => {
-    localStorage.setItem("readBooks",JSON.stringify(readBooks))
-  },[readBooks])
 
  useKeyDownEvent('Escape',back)
 
