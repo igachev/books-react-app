@@ -48,13 +48,15 @@ export default function BookDetails({
     
     {!isLoading && !error && (
             <div className="book-details-container">
+            <div className="details-img-container">
             <img src={book.imageUrl} alt={book.title} />
+            </div>
             <h3>Title: {book.title}</h3>
             <h5>Author: {book.author}</h5>
-            <h6>Year: {book.year}</h6>
+            <h5>Year: {book.year}</h5>
             <p>{book.resume}</p>
             <StarRating maxRating={5} book={book} addReadBook={addReadBook} />
-            <button onClick={back}>Back</button>
+            <button className="details-btn" onClick={back}>Back</button>
             {readBookError ? <p>{readBookError}</p> : null}
             
         </div>

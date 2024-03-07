@@ -22,7 +22,7 @@ export default function StarRating({
            ))}
            <span className="rating-value">{rating || hoverRating}</span>
            <div>
-                <button onClick={() => addReadBook(book,rating)}>Add as Read</button>
+                <button className="details-btn" onClick={() => addReadBook(book,rating)}>Add as Read</button>
             </div>
         </div>
     )
