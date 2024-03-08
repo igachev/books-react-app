@@ -1559,7 +1559,7 @@
                 title:"War and Peace",
                 author:"Leo Tolstoy",
                 resume:"Set in the backdrop of the Napoleonic era, the novel presents a panorama of Russian society and its descent into the chaos of war. It follows the interconnected lives of five aristocratic families, their struggles, romances, and personal journeys through the tumultuous period of history. The narrative explores themes of love, war, and the meaning of life, as it weaves together historical events with the personal stories of its characters.",
-                imageUrl:"https://upload.wikimedia.org/wikipedia/commons/0/05/WarAndPeace.jpg",
+                imageUrl:"https://upload.wikimedia.org/wikipedia/en/thumb/7/73/Cover_of_War_and_Peace_wargame.png/220px-Cover_of_War_and_Peace_wargame.png",
                 year:1995,
                 _ownerId: "35c62d76-8152-4626-8712-eeb96381bea8",
                 _createdOn: 1707755547329,
