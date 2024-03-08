@@ -16,6 +16,7 @@ import { useLocalStorage } from './services/useLocalStorage.js'
 function App() {
   
   const [books,setBooks] = useState([])
+  const [pageNumber,setPageNumber] = useState(0)
   const [readBooks,setReadBooks] = useLocalStorage("readBooks")
  
 
@@ -78,7 +79,7 @@ function App() {
 
     <List>
       <h2>Available Books</h2>
-   {!error && !isLoading && <BookList books={books} updateSelectedBookId={updateSelectedBookId} /> }
+   {!error && !isLoading && <BookList books={books} setBooks={setBooks} updateSelectedBookId={updateSelectedBookId} pageNumber={pageNumber} setPageNumber={setPageNumber} /> }
    {!error && isLoading && <Loader />}
    {error && !isLoading && <p>Error: {error}</p>}
     </List>

@@ -1574,6 +1574,26 @@
                 year:2010,
                 _ownerId: "35c62d76-8152-4626-8712-eeb96381bea8",
                 _createdOn: 1707711147329,
+            },
+            "83298329": {
+                _id:"5",
+                title:"The Lord of the Rings",
+                author:"J. R. R. Tolkien",
+                resume:"This epic high-fantasy novel centers around a modest hobbit who is entrusted with the task of destroying a powerful ring that could enable the dark lord to conquer the world. Accompanied by a diverse group of companions, the hobbit embarks on a perilous journey across Middle-earth, battling evil forces and facing numerous challenges. The narrative, rich in mythology and complex themes of good versus evil, friendship, and heroism, has had a profound influence on the fantasy genre.",
+                imageUrl:"https://upload.wikimedia.org/wikipedia/en/e/e9/First_Single_Volume_Edition_of_The_Lord_of_the_Rings.gif",
+                year:1991,
+                _ownerId: "35c62d76-8152-4626-8712-eeb96381bea8",
+                _createdOn: 1707711147456,
+            },
+            "832983292893": {
+                _id:"6",
+                title:"The Adventures of Huckleberry Finn",
+                author:"Mark Twain",
+                resume:"The novel follows the journey of a young boy named Huckleberry Finn and a runaway slave named Jim as they travel down the Mississippi River on a raft. Set in the American South before the Civil War, the story explores themes of friendship, freedom, and the hypocrisy of society. Through various adventures and encounters with a host of colorful characters, Huck grapples with his personal values, often clashing with the societal norms of the time.",
+                imageUrl:"https://upload.wikimedia.org/wikipedia/commons/6/61/Huckleberry_Finn_book.JPG",
+                year:1989,
+                _ownerId: "35c62d76-8152-4626-8712-eeb96381bea8",
+                _createdOn: 1702221147456,
             }
         },
 
