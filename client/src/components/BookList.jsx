@@ -1,20 +1,11 @@
-import { useEffect } from "react"
+
 import Book from "./Book"
-import * as bookService from '../services/bookService'
 
 export default function BookList({
     books,
     updateSelectedBookId,
-    pageNumber,
-    setPageNumber,
-    setBooks
+    setPageNumber
 }) {
-
-    useEffect(() => {
-        bookService.getBooks(pageNumber)
-        .then((result) => setBooks(result))
-        .catch((err) => console.log(err))
-    },[pageNumber])
 
     function nextPage() {
         setPageNumber((currentPage) => books.length === 4 ? currentPage + 1 : currentPage)
@@ -31,7 +22,7 @@ export default function BookList({
             ))}
 
             <div>
-                {pageNumber >= 0 ? <button className="details-btn" onClick={nextPage}>Next Page</button> : null}
+                {setPageNumber ? <button className="details-btn" onClick={nextPage}>Next Page</button> : null}
             </div>
 
         </div>

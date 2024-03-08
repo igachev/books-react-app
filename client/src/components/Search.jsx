@@ -6,13 +6,18 @@ import { useKeyDownEvent } from '../services/useKeyDownEvent.js'
 export default function Search({
     setBooks,
     setError,
-    setIsLoading
+    setIsLoading,
+    setPageNumber
 }) {
 
     const [searchValue,setSearchValue] = useState("")
     const [booksFound, setBooksFound] = useState(0)
     const inputSearchRef = useRef(null)
     const controller = new AbortController()
+
+    function updateSearchValue(e) {
+            setSearchValue(e.target.value) 
+    }
 
     async function searchBooks() {
         try {
@@ -25,6 +30,13 @@ export default function Search({
             if(result.length === 0) {
                setError("No such books!")
                return
+            }
+
+            else if(searchValue === '') {
+                const firstPageBooks = await bookService.getBooks()
+                setBooks(firstPageBooks)
+                setPageNumber(0)
+                setBooksFound(0)
             }
 
             else {
@@ -44,7 +56,9 @@ export default function Search({
     }
 
     useEffect(() => {
+       
         searchBooks();
+       
         return () => {
             controller.abort()
         }
@@ -65,7 +79,7 @@ export default function Search({
             placeholder="Search books..."
             ref={inputSearchRef} 
             value={searchValue} 
-            onInput={(e) => setSearchValue(e.target.value)} />
+            onInput={updateSearchValue} />
             <span>Books Found: {booksFound}</span>
         </div>
     )

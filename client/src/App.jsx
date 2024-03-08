@@ -62,8 +62,10 @@ function App() {
   }
 
   useEffect(() => {
-    getBooks()
-  },[])
+      bookService.getBooks(pageNumber)
+    .then((result) => setBooks(result))
+    .catch((err) => console.log(err))
+},[pageNumber])
 
  useKeyDownEvent('Escape',back)
 
@@ -72,14 +74,14 @@ function App() {
 
       <Header>
         <Logo />
-        <Navbar setBooks={setBooks} setError={setError} setIsLoading={setIsLoading} />
+        <Navbar setBooks={setBooks} setPageNumber={setPageNumber} setError={setError} setIsLoading={setIsLoading} />
       </Header>
 
       <Main>
 
     <List>
       <h2>Available Books</h2>
-   {!error && !isLoading && <BookList books={books} setBooks={setBooks} updateSelectedBookId={updateSelectedBookId} pageNumber={pageNumber} setPageNumber={setPageNumber} /> }
+   {!error && !isLoading && <BookList books={books} setBooks={setBooks} updateSelectedBookId={updateSelectedBookId} setPageNumber={setPageNumber} /> }
    {!error && isLoading && <Loader />}
    {error && !isLoading && <p>Error: {error}</p>}
     </List>
