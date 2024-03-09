@@ -11,6 +11,10 @@ export default function BookList({
         setPageNumber((currentPage) => books.length === 4 ? currentPage + 1 : currentPage)
     }
 
+    function previousPage() {
+        setPageNumber((currentPage) => currentPage > 0 ? currentPage - 1 : currentPage)
+    }
+
     return (
         <div className="book-list-container">
             {books.map((book) => (
@@ -22,7 +26,12 @@ export default function BookList({
             ))}
 
             <div>
-                {setPageNumber ? <button className="details-btn" onClick={nextPage}>Next Page</button> : null}
+                {setPageNumber ? 
+                <>
+                <button className="details-btn" onClick={previousPage} style={ {marginRight:"5px"} }>Previous Page</button>
+                <button className="details-btn" onClick={nextPage}>Next Page</button>
+                </>
+                : null}
             </div>
 
         </div>
