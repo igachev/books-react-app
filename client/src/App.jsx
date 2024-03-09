@@ -88,10 +88,11 @@ function App() {
 
     <List>
       {selectedBookId ? <h2>Book Details</h2> : <h2>Read Books</h2>}
+      {readBooks.length === 0 && !selectedBookId ? <h3 style={ {textAlign:'center'} }>No books added yet.Please add.</h3> : null}
       {
-      selectedBookId 
+      selectedBookId
       ? <BookDetails selectedBookId={selectedBookId} addReadBook={addReadBook} readBookError={readBookError} back={back} /> 
-      : <BookList books={readBooks} />
+      :  readBooks.length > 0 && <BookList books={readBooks} />
       }
       
     </List>
