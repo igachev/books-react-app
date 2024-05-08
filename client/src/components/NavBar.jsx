@@ -8,7 +8,7 @@ export default function Navbar({
 }) {
 
     return (
-        <div className="navbar-container">
+        <div className="navbar-container" data-testid='navbar-component'>
            <Search setBooks={setBooks} setPageNumber={setPageNumber} setError={setError} setIsLoading={setIsLoading} />
         </div>
     )
