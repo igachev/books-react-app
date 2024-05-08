@@ -40,4 +40,16 @@ describe("Header Component",() => {
         // Check if Header component has exactly 2 children
         expect(header.children.length).toBeGreaterThanOrEqual(2);
     });
+
+    test("header component children prop should throw error if there are less than 2 children", () => {
+
+        // Render Header with children
+        expect(() =>  render(
+            <Header>
+                
+                <Navbar setBooks={null} setPageNumber={jest.fn()} setError={jest.fn()} setIsLoading={jest.fn()}/>
+            </Header>
+        )).toThrow(new Error("Header component requires at least 2 children."))
+
+    });
 })
