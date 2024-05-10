@@ -44,7 +44,6 @@ test("should display the list of books", async() => {
     render(<BookList books={bookListMock} updateSelectedBookId={jest.fn()} setPageNumber={jest.fn()} />)
     const allBooks = screen.getAllByTestId("book-component")
     expect(allBooks.length).toBe(bookListMock.length)
-    screen.debug()
 })
 
 test("should have only 2 buttons if we have property setPageNumber", async() => {
