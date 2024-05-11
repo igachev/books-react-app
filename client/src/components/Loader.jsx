@@ -2,7 +2,7 @@
 export default function Loader() {
 
     return (
-        <div>
+        <div data-testid="loader-component">
             Loading...
         </div>
     )

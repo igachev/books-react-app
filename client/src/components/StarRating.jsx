@@ -10,7 +10,7 @@ export default function StarRating({
     const [rating,setRating] = useState(0)
     const [hoverRating,setHoverRating] = useState(0)
     return (
-        <div className="star-rating">
+        <div className="star-rating" data-testid="star-rating-component">
            {Array.from( {length:maxRating}, (k,i) => (
             <Star 
             key={i} 
