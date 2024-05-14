@@ -137,4 +137,25 @@ describe("BookDetails component",() => {
         fireEvent.click(backButton)
         expect(mockBack).toHaveBeenCalledTimes(1)
     })
+
+    test("document title should display current book title", async() => {
+
+        let mockSelectedBookId = jest.fn()
+        let mockAddReadBook = jest.fn()
+        let mockReadBookError = ""
+        let mockBack = jest.fn()
+
+        let getBookSpy = jest.spyOn(bookService,"getBook").mockResolvedValue(mockBookDetails)
+
+        render(<BookDetails 
+            selectedBookId={mockSelectedBookId} 
+            addReadBook={mockAddReadBook} 
+            readBookError={mockReadBookError} 
+            back={mockBack} />)
+
+        const loader = await screen.findByTestId('loader-component')
+        expect(loader).not.toBeInTheDocument()
+        expect(document.title).toBe(mockBookDetails.title)
+    })
+
 })

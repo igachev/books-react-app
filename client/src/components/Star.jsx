@@ -10,7 +10,7 @@ export default function Star({
 }) {
 
     return (
-       <span className='star' onClick={onRate} onMouseEnter={onHoverIn} onMouseLeave={onHoverOut}>
+       <span className='star' onClick={onRate} onMouseEnter={onHoverIn} onMouseLeave={onHoverOut} data-testid="star-component">
         {
              full
              ? <FontAwesomeIcon icon={faStar} size="lg" style={{color: "#FFD43B",}} />  
