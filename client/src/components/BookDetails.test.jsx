@@ -21,6 +21,54 @@ describe("BookDetails component",() => {
         jest.clearAllMocks();
       });
 
+    test("should display loading component when book details request is not completed",async() => {
+        let mockSelectedBookId = jest.fn()
+        let mockAddReadBook = jest.fn()
+        let mockReadBookError = ""
+        let mockBack = jest.fn()
+
+        render(<BookDetails 
+            selectedBookId={mockSelectedBookId} 
+            addReadBook={mockAddReadBook} 
+            readBookError={mockReadBookError} 
+            back={mockBack} />)
+
+            const loader = await screen.findByTestId('loader-component')
+            const title = screen.queryByText(new RegExp(mockBookDetails.title))
+            const author = screen.queryByText(new RegExp(mockBookDetails.author))
+            const year = screen.queryByText(new RegExp(mockBookDetails.year))
+            const resume = screen.queryByText(new RegExp(mockBookDetails.resume))
+            
+            expect(loader).toBeInTheDocument()
+
+            expect(title).not.toBeInTheDocument()
+            expect(author).not.toBeInTheDocument()
+            expect(year).not.toBeInTheDocument()
+            expect(resume).not.toBeInTheDocument()
+            
+    })
+
+    test("should display error message if there is no such book",async() => {
+        let mockSelectedBookId = jest.fn()
+        let mockAddReadBook = jest.fn()
+        let mockReadBookError = ""
+        let mockBack = jest.fn()
+
+        let getBookSpy = jest.spyOn(bookService,"getBook").mockRejectedValue(new Error('Resource not found'))
+
+        render(<BookDetails 
+            selectedBookId={mockSelectedBookId} 
+            addReadBook={mockAddReadBook} 
+            readBookError={mockReadBookError} 
+            back={mockBack} />)
+
+        const loader = await screen.findByTestId('loader-component')
+        expect(loader).not.toBeInTheDocument()
+
+        const errorMessage = await screen.findByText("Error:Resource not found")
+        expect(errorMessage).toBeInTheDocument()
+    })
+
     test("should display correct book details after completed Loading stage", async() => {
         let mockSelectedBookId = jest.fn()
         let mockAddReadBook = jest.fn()
@@ -49,6 +97,7 @@ describe("BookDetails component",() => {
         expect(author).toBeInTheDocument()
         expect(year).toBeInTheDocument()
         expect(resume).toBeInTheDocument()
+        
     })
 
     test("should call bookService.getBook() only once", async() => {

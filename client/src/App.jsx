@@ -62,10 +62,10 @@ function App() {
   }
 
   useEffect(() => {
-      bookService.getBooks(pageNumber)
-    .then((result) => setBooks(result))
-    .catch((err) => console.log(err))
-},[pageNumber])
+    bookService.getBooks(pageNumber)
+  .then((result) => setBooks(result))
+  .catch((err) => console.log(err))
+  },[pageNumber])
 
  useKeyDownEvent('Escape',back)
 
