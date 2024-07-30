@@ -79,7 +79,9 @@ export default function Search({
             placeholder="Search books..."
             ref={inputSearchRef} 
             value={searchValue} 
-            onInput={updateSearchValue} />
+            onInput={updateSearchValue} 
+            data-testid="search-input"
+            />
             <span>Books Found: {booksFound}</span>
         </div>
     )
